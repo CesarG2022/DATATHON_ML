@@ -1,0 +1,8 @@
+node_modules
+package-lock.json
+properties_colombia_train.csv
+properties_colombia_test.csv
+# Eleventy build
+_dist
+_cache
+/_src/localStyles
