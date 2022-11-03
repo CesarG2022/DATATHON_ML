@@ -57,6 +57,8 @@ Como método de evaluación del desempeño del modelo se utiliza la métrica de 
             - operation_type: todos 'Venta'
             - ad_type: todos 'Propiedad'
             - price_period: solo tiene nulos o 'Mensual' y mensual no da información ya que no hay   arriendos, solo hay ventas.
+            - l1: todos son 'colombia'
+            - currency: despues de eliminar las 8 filas con USD y nulo, todos los valores son COP
         - nulas, estas son columnas con mayoría nulos: !!!!!!!!!!!!!!!!PENDIENTE
             - 
         - no relacionadas con el objetivo, estas son columnas no relacionadas con el precio: 
@@ -83,8 +85,6 @@ Como método de evaluación del desempeño del modelo se utiliza la métrica de 
     - LabelEncoder
     - Reducción de dimensionalidad.
 
-
-- Selección de modelos
 - Selección de hiperparametros
 - Predicción (instanciación, fitting, y predicción)
 - Evaluación: 
