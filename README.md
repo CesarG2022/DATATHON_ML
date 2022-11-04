@@ -9,9 +9,6 @@ Implementar un modelo de clasificación que permita clasificar el precio de las 
 - CesarG2022.csv: git statusvalores predichos(0:barato, 1:caro) para el dataset properties_colombia_test.csv por el mejor modelo  
 - properties_colombia.zip: archivo comprimido que contine 1 dataset de entrenamiento y 1 de testeo.
 
-¡NOTA!: el github tiene de momento dos branches con merge pendiente, el branch mas actual es el: filledwithKNNimputer
-
-
 ## Métricas para evaluar.
 
 Como método de evaluación del desempeño del modelo se utiliza la métrica de Exhaustividad (Recall) para las propiedades caras, adicionalmente se incluye la Accuracy como métrica de control.
