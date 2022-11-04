@@ -2,6 +2,8 @@ node_modules
 package-lock.json
 properties_colombia_train.csv
 properties_colombia_test.csv
+data_train_sf.csv
+properties_colombia.zip
 # Eleventy build
 _dist
 _cache
