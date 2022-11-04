@@ -1,54 +1,23 @@
-![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
-​
-# Proyecto individual 2
-​
-¡Bienvenidos al segundo proyecto! Durante estos días estarán poniendo en práctica sus habilidades en el campo de la predicción. Deberán usar cierta métrica para medir la performance del modelo la cual, a su vez, será usada para elegir los mejores modelos.
-​
-## Información relevante
-​
-Este proyecto es una instancia de evaluación, por lo cual es INDIVIDUAL y OBLIGATORIO para los alumnos de Data Science de Henry. Se disponibilizará un Google Form y pueden cargarse los resultados las veces que quieran. Es obligatorio que todos disponibilicen el código utilizado, para validar los modelos construidos.
-​
-## Mercado inmobiliario
-​
-Dentro de la sociedad globalizada e industrializada, es sabido que los precios de los inmuebles han presentado un constante cambio, por lo que quienes deseen invertir o vender una propiedad se enfrentan al fenómeno especulativo existente en la valorización de éstos. Esto, debido a la constante tendencia de las ciudades a crecer demográfica y comercialmente, llegando a un punto en donde no se tiene certeza de la valorización real dentro del sector en donde se desee invertir. 
-​
-Pese a que el precio depende, en cierta medida, de las tendencias que esté teniendo el mercado inmobiliario en un determinado tiempo, poder estimar adecuadamente el valor de una propiedad es una referencia clave para entender si es una buena oportunidad, ya sea de compra o de venta.
-​
-## Descripción del problema
-​
-Usted ha sido contactado de una importante empresa inversora dentro del rubro de la inmobiliaria en Colombia, con el fin de que implemente un modelo de clasificación que permita clasificar el precio de las propiedades en venta, utilizando los datos que se han puesto a su disposición correspondientes al año 2020.
-​
-Para esto, específicamente, debe predecir la **categorización** de las propiedades entre baratas o caras, considerando como criterio el valor promedio de los precios (la media). 
-​
-## Entrega
-​
-Deben tener el código en un script .py o Jupyter Notebook .ipynb, el cual debe incluir un buen EDA, feature engineerging y, de ser posible, un pipeline de Machine Learning para el procesamiento de datos que consideren necesario. Es importante **explicar claramente cada paso realizado** mediante comentarios en el script o textos formato markdown dentro del Notebook, pensar que cualquier persona (en este caso serán los Henry Mentors evaluadores) debe entender de la mejor manera posible cada razonamiento y pasos aplicados.
-​
-Recuerden, además, que deben enviar el repositorio que contenga el proyecto, por lo que es importante que le dediquen tiempo también a esta parte, dejando todo ordenado y con un README acorde, que sirva de introducción al contenido dentro de éste.
-​
-Por otro lado, es obligatorio que el script genere un archivo .csv sólo con las predicciones, teniendo únicamente **una sola columna** (sin index) que debe llamarse 'pred' y tenga todos los valores de las predicciones, con un valor por fila. De no llamarse así la **única columna**, nuestro script de validación **NO LO VA A TOMAR** y no aparecerán en el dashboard.
-​
-El nombre del archivo debe ser su usuario de GitHub, si su usuario de GitHub es 'pjr95', el archivo .csv con las predicciones debe llamarse 'pjr95.csv'. Vamos a validar tanto los datos que suban como el código, por lo que seguir estos pasos es fundamental.
-​
-Cuando entreguen les pedimos que verifiquen que su usuario de GitHub aparezca en el dashboard. En caso de que no aparezca, tal como se comentó más arriba, es debido a que el archivo entregado con las predicciones no cumple con los requisitos solicitados. 
-​
-## Métrica a utilizar
-​
-Como método de evaluación del desempeño del modelo, se utilizará la métrica de Exhaustividad (Recall) para las propiedades caras, a partir de la matriz de confusión (Confusion Matrix). 
-​
-$$ Recall=\frac{TP}{TP+FN}$$
-​
-Donde $TP$ son los verdaderos positivos y $FN$ los falsos negativos.
+# Proyecto individual 2 - Datathon Machine Learning
 
-Adicionalmente, se incluye la Accuracy como métrica de control.
-​
-## Archivos provistos
-​
-Se proveen los archivos dentro del archivo comprimido 'properties_colombia.zip':
- - 'properties_colombia_train.csv': Contiene 197549 registros y 26 dimensiones, el cual incluye la información **numérica** del precio.
- - 'propiedades_colombia_test.csv': Contiene 65850 registros y 25 dimensiones, el cual no incluye la información del precio. 
-​
-## Descripción de las dimensiones
+## Objetivos.
+
+Implementar un modelo de clasificación que permita clasificar el precio de las propiedades en venta en las categorías barato(por debajo de la media) o caro(por encima de la media), utilizando datatasets de ventas de propiedades inmobiliarias de Colombia del año 2020.
+
+## Archivos: 
+- DATATHON_ML.ipynb : notebook con la carga de datos, preprocesamiento y entrenamiento de los modelos
+- CesarG2022.csv: git statusvalores predichos(0:barato, 1:caro) para el dataset properties_colombia_test.csv por el mejor modelo  
+- properties_colombia.zip: archivo comprimido que contine 1 dataset de entrenamiento y 1 de testeo.
+
+¡NOTA!: el github tiene de momento dos branches con merge pendiente, el branch mas actual es el: filledwithKNNimputer
+
+
+## Métricas para evaluar.
+
+Como método de evaluación del desempeño del modelo se utiliza la métrica de Exhaustividad (Recall) para las propiedades caras, adicionalmente se incluye la Accuracy como métrica de control.
+
+## Descripción de las dimensiones de datatsets.
+
 - id - Identificador del aviso. No es único: si el aviso es actualizado por la inmobiliaria (nueva versión del aviso) se crea un nuevo registro con la misma id pero distintas fechas: de alta y de baja.
 - ad_type - Tipo de aviso (Propiedad, Desarrollo/Proyecto).
 - start_date - Fecha de alta del aviso.
@@ -74,14 +43,64 @@ Se proveen los archivos dentro del archivo comprimido 'properties_colombia.zip':
 - description - Descripción del anuncio.
 - property_type - Tipo de propiedad (Casa, Departamento, PH).
 - operation_type - Tipo de operación (Venta).
-- geometry - Puntos geométricos formados por las coordenadas latitud y longitud. 
-​
-## Sugerencias
-​
-- Exploren el dataset. Saquen medidas resumen, vean distribuciones de los datos, analicen bien el tipo de problema, etc.
-- Piensen que tipo de modelo podría ser aplicable según la descripción del problema y el tipo de variable de salida.
-- Busquen información sobre la métrica aplicada, cada métrica tiene pros y contras.
-- Siempre que vean en un dataset coordenadas geoespaciales, es buena estrategia revisar que las mismas correspondan en el mapa al lugar que deberían.
-- Si se presentan comentarios, es una buena oportunidad de aplicar procesamiento del lenguaje natural (NLP) para mejorar nuestro modelo.
-- En cuanto a la utilización de git, recuerden que si quieren hacer un cambio experimental pero no quieren romper el modelo, pueden utilizar [branching](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging).
-- Aprovechen esta instancia de aprendizaje, experimenten y, sobre todo, ¡diviértanse!
+- geometry - Puntos geométricos formados por las coordenadas latitud y longitud.
+
+## Flujo de trabajo
+
+- Carga de datos: lectura de archivo properties_colombia_train.csv
+- Dar formato a datos
+    - fechas: 
+            - En columna end_date se cambian instancias con año 9999(11974 datos) por None; se dejan instancias con año 2020 y 2021(esta última porque es fecha de baja de aviso).
+            
+- Manejo inconsistencias
+    - Currency: se eliminan 8 datos con USD porque representan menos del 0.01% de los datos.
+    - longitud, latitud: se eliminan valores(dos filas) fuera del rango de valores posibles para colombia.
+    - tratamiento de nulos:
+        - end_date: se dejan 11974 nulos (se rellenan automáticamente con 1 después de aplicar formato to_ordinal()).
+        - currency y price: se elimnan 67 filas con nulos, representan menos de 0.1% de los datos.
+
+    - identificación y eliminación de columnas que no dan información:
+
+        - columnas invariantes, estas son columnas con variable categórica con un solo valor(categoría) para parte o todos los datos:
+            - operation_type: todos son 'Venta'.
+            - ad_type: todos son 'Propiedad'.
+            - price_period: solo tiene nulos o 'Mensual' y mensual no da información ya que no hay arriendos, solo hay ventas.
+            - l1: todos son 'colombia'.
+            - currency: despues de eliminar las 8 filas con USD y nulo, todos los valores son COP.
+
+        - columnas no relacionadas con el objetivo, estas son columnas no relacionadas con el precio: 
+            - id
+            - unnamed:0.
+
+        - columnas duplicadas: 
+            - created_on y start-date: se elimina created_on
+            - geometry y lat, lon: se elimina geometry
+
+    - Eliminación de dúplicados: se realizan dos tipos de eliminacion de duplicados:
+         - sin fechas: se aplica dropduplicate() sobre un nuevo dataframe llamado data_train_sf que se crea elimando las columnas start_date y end_date del dataframe(data_train) del flujo de trabajo principal. las columnas de fechas se eliminan considerando que ninguna de ellas tiene correlación con el precio. En este caso se eliminan aprox. 38% de filas.
+        - con fechas: simplemente se aplica dropduplicate() sobre el dataframe(data_train) del flujo de trabajo principal. en este caso eliminan aprox. 2% de filas. Este dataframe se útiliza en adelante como dataframe de referencia y se trabaja principalmente con el dataframe sin fechas porque en el análisis exploratorio no se encontró relación entre fechas y target.
+     
+    
+- EDA(selección de features):
+    - creación de target: nueva columna con dos valores, 0:precio < media , 1:precio>media. la media se obtiene del dataframe con fechas porque tiene mas datos.
+    - verificación de balanceo: se considera que la relacion de aprox. de 24/76 es aceptable(>5/95)
+    - búsqueda de correlación: usando corr en un mapa de calor y pairplot se logran identificar tres variables correlacionadas con el target, estas son bathrooms, surface_total y rooms 
+    - imputación de valores: se prefirió el KNNimputer sobre la media, debido a la alta cantidad de datos faltantes en las columnas de interes.
+        - lat y lon: se imputan con el método de KNNimputer utilizando también las columnas l2, l3, l4 porque están relacionadas con ubicación y property_type porque de las columnas que no tinen nulos es la que podría estar mas relacionada con ubicación. para poder utilizar l2, l3, l4 y property_type se realizo una codificación con getdummies y debido a la gran cantidad de columnas que se obtuvieron(<400) se utiliza PCA para reducirlas a 20 columnas. no se utilizaron l5 y l6 porque son muy pocos datos.
+        - rooms, bedrooms, bathrooms, surface_total, surface covered: se imputan también con el método KNNimputer utilizando ademas de estas mismas la columna property_type, de nuevo codificada con getdummies pero sin reducción de dimesiones debido a la baja cantidad de categorías. se eligen estas columnas porque todas estan relacionadas con tamaño.
+
+    - codificación de variable property_type, para incluirla en selección de features con Kbest(), la nueva columna codificada se denomina 'property_type_le'.
+    - Selección de features con KBest: se introducen las columnas 'lat', 'lon', 'rooms', 'bedrooms', 'bathrooms', 'surface_total', 'surface_covered','property_type_le'. se obtienen mayores scores para columnas: lat, lon, bathrooms, surface_total.
+    
+- Aplicación de modelos:
+    - HistGradientBoostingClassifier: se utilizo en primer ya que acepta columnas con NAN, da como resultado recall muy bajos.
+    - RandomForestClassifier: ofrece tanto accuracy como recall bastante altos.
+    - XGBClassifier(boosting)
+    - 
+
+- Preparación de dataset de testeo: se realiza todo el preprocesamiento que se realizó al dataframe de entrenamiento.
+- Predicciones sobre dataset de testeo con modelos previamente entrenados y exportación a csv.
+
+
+
+
