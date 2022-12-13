@@ -93,7 +93,7 @@ Como método de evaluación del desempeño del modelo se utiliza la métrica de 
     - HistGradientBoostingClassifier: se utilizo en primer ya que acepta columnas con NAN, da como resultado recall muy bajos.
     - RandomForestClassifier: ofrece tanto accuracy como recall bastante altos.
     - XGBClassifier(boosting)
-    - 
+    
 
 - Preparación de dataset de testeo: se realiza todo el preprocesamiento que se realizó al dataframe de entrenamiento.
 - Predicciones sobre dataset de testeo con modelos previamente entrenados y exportación a csv.
